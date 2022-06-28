@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:squadio_task/network/popular_people.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,6 +27,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    PopularPeopleNetwork.getPagePopularPeople(1);
     return Scaffold(
       appBar: AppBar(
         
@@ -35,6 +37,7 @@ class HomePage extends StatelessWidget {
         
         child: Column(
           children: <Widget>[
+            Text('get data')
           ],
         ),
       ),
