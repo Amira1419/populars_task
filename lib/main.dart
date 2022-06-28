@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:squadio_task/network/popular_people.dart';
+import 'package:squadio_task/ui/screens/popular_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'FAMOUS APP',
       theme: ThemeData(
-        primarySwatch: Colors.lightGreen,
-        primaryColor: Colors.lightGreen.shade100,
+        primarySwatch: Colors.red,
+        primaryColor: Colors.lightBlue.shade900,
       ),
       home: const HomePage(),
     );
@@ -27,20 +27,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    PopularPeopleNetwork.getPagePopularPeople(1);
-    return Scaffold(
-      appBar: AppBar(
-        
-        title: const Text("FAMOUS"),
-      ),
-      body: Center(
-        
-        child: Column(
-          children: <Widget>[
-            Text('get data')
-          ],
-        ),
-      ),
-    );
+    return const PopularListScreen();
   }
 }

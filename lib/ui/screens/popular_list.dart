@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:squadio_task/ui/widgets/paged_popular_list.dart';
 
 
 class PopularListScreen extends StatelessWidget {
@@ -8,8 +9,9 @@ class PopularListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        
+        title: const Text('FAMOUS'),
       ),
+      body: PagedPopularList(),
     );
   }
 }
