@@ -14,7 +14,7 @@ class _PopularPersonDetailsScreenState
     extends State<PopularPersonDetailsScreen> {
   @override
   void initState() {
-    // TODO: implement initState
+    
     Provider.of<PopularDetailsProvider>(context, listen: false)
         .getPopularDetails();
     Provider.of<PopularDetailsProvider>(context, listen: false)
