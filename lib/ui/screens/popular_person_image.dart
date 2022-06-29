@@ -9,8 +9,6 @@ class PopularPersonImageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    PopularPeopleNetwork.getPopularPeronDetails(popularPerson.id); 
-    PopularPeopleNetwork.getPopularPeronImages(popularPerson.id); 
 
     return Scaffold(
       appBar: AppBar(

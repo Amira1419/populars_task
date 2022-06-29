@@ -7,7 +7,7 @@ class PopularDetails{
   final String birthDay;
   final String? deathDay;
   final String placeOfBirth;
-  List<String> alsoKnownAs = [];
+  List alsoKnownAs = [];
 
   PopularDetails({
     required this.id,
@@ -30,7 +30,7 @@ class PopularDetails{
   birthDay = json['birthday'],
   deathDay = json['deathday'],
   placeOfBirth = json['place_of_birth'],
-  alsoKnownAs = json['also_known_as'] == null? []:(json['also_known_as'] as List<String>)
+  alsoKnownAs = json['also_known_as'] == null? []:(json['also_known_as'] as List)
   ;
   
 }

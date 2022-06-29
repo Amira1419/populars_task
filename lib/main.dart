@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:squadio_task/providers/popular_details_provider.dart';
 import 'package:squadio_task/ui/screens/popular_list.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(providers: [
+      ChangeNotifierProvider<PopularDetailsProvider>(create: (_) => PopularDetailsProvider(),)
+    ],
+    child: const MyApp())
+    );
 }
 
 class MyApp extends StatelessWidget {
