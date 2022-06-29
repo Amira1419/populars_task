@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:squadio_task/models/popular_person_model.dart';
+import 'package:squadio_task/network/popular_people.dart';
 import 'package:squadio_task/network/save_image_network.dart';
 
 class PopularPersonImageScreen extends StatelessWidget {
@@ -8,6 +9,9 @@ class PopularPersonImageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    PopularPeopleNetwork.getPopularPeronDetails(popularPerson.id); 
+    PopularPeopleNetwork.getPopularPeronImages(popularPerson.id); 
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
