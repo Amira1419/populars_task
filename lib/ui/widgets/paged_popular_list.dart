@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:squadio_task/models/popular_person_model.dart';
+import 'package:squadio_task/providers/populars_pagination_provider.dart';
 import 'package:squadio_task/repository/popular_people_repo.dart';
 import 'package:squadio_task/ui/widgets/popular_person_card.dart';
 
@@ -11,9 +13,10 @@ class PagedPopularList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var paginationProvider = Provider.of<PopularsPaginationProvider>(context,listen: false);
     return FutureBuilder(
-      future: PopularPeopleRepo.getPopularPeopleList(_pageNumber),
-      builder:(_,AsyncSnapshot<List<PopularPerson>> snapshot)
+      future: paginationProvider.fetchNextPagePopulars(),
+      builder:(_,snapshot)
       {
         // there will be 2 cases : function return error or function return with data -> empty or not
         if(snapshot.connectionState == ConnectionState.waiting)
@@ -23,20 +26,31 @@ class PagedPopularList extends StatelessWidget {
             );
         }
 
-        else if(snapshot.hasData)
+        else if(paginationProvider.totalPopulars.isEmpty)
         {
-          if(snapshot.data!.isEmpty)
-          {
+          
             return const Center(
               child:Text('No Data')
             );
-          }else{   // data is not empty
+        }
+        else if (paginationProvider.totalPopulars.isNotEmpty){   // data is not empty
             
-            return ListView.builder(
-              itemBuilder:(__,index) => PopularPersonCard(popularPerson: snapshot.data![index],),
-              itemCount: snapshot.data!.length,
-              );
-          }
+            return Consumer<PopularsPaginationProvider>(
+              builder: (ctx, paginationProviderData,child){
+                return ListView.builder(
+                itemBuilder:(__,index) {
+                  if(index == paginationProviderData.totalPopulars.length-1)
+                  {
+                    paginationProviderData.fetchNextPagePopulars();
+                  }
+                  return PopularPersonCard(popularPerson: paginationProviderData.totalPopulars[index],);
+                },
+                itemCount: paginationProviderData.totalPopulars.length,
+                );
+              },
+ 
+            );
+          
         }else{
           return const Center(
               child:Text('Something Went Wrong')
