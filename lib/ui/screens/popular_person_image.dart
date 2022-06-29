@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:squadio_task/models/popular_person_model.dart';
-import 'package:squadio_task/network/popular_people.dart';
 import 'package:squadio_task/network/save_image_network.dart';
 
 class PopularPersonImageScreen extends StatelessWidget {

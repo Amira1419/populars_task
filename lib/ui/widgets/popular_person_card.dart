@@ -57,7 +57,6 @@ class PopularPersonCard extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: Colors.grey.shade200,
                           borderRadius: BorderRadius.circular(16),
-                          border: Border.all(color: Colors.red)
                         ),
                       )   
                     ],

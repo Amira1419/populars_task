@@ -28,7 +28,6 @@ class PopularPeopleNetwork
       var url = Uri.parse("https://api.themoviedb.org/3/person/$id?api_key=$API_KEY");
       var response = await client.get(url);
       Map<String,dynamic> jsonResponse = jsonDecode(response.body);
-      print(jsonResponse);
       return jsonResponse;
     } catch (e) 
     {
@@ -47,7 +46,6 @@ class PopularPeopleNetwork
       var url = Uri.parse("https://api.themoviedb.org/3/person/$id/images?api_key=$API_KEY");
       var response = await client.get(url);
       Map<String,dynamic> jsonResponse = jsonDecode(response.body);
-      print(jsonResponse);
       return jsonResponse;
     } catch (e) 
     {

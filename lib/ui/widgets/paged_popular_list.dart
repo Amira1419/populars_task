@@ -31,6 +31,7 @@ class PagedPopularList extends StatelessWidget {
               child:Text('No Data')
             );
           }else{   // data is not empty
+            
             return ListView.builder(
               itemBuilder:(__,index) => PopularPersonCard(popularPerson: snapshot.data![index],),
               itemCount: snapshot.data!.length,

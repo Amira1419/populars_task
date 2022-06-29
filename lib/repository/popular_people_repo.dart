@@ -21,7 +21,6 @@ class PopularPeopleRepo {
     try {
       Map<String, dynamic> popularDetailsData =
           await PopularPeopleNetwork.getPopularPeronDetails(id);
-      print(popularDetailsData);
       return PopularDetails.fromJson(popularDetailsData);
     } catch (e) {
       rethrow;

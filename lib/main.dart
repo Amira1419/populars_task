@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:squadio_task/providers/popular_details_provider.dart';
+import 'package:squadio_task/providers/populars_pagination_provider.dart';
 import 'package:squadio_task/ui/screens/popular_list.dart';
 
 void main() {
   runApp(
     MultiProvider(providers: [
-      ChangeNotifierProvider<PopularDetailsProvider>(create: (_) => PopularDetailsProvider(),)
+      ChangeNotifierProvider<PopularDetailsProvider>(create: (_) => PopularDetailsProvider(),),
+      ChangeNotifierProvider<PopularsPaginationProvider>(create: (_) => PopularsPaginationProvider(),)
+
     ],
     child: const MyApp())
     );
@@ -34,6 +37,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Provider.of<PopularsPaginationProvider>(context,listen: false).fetchNextPagePopulars();
     return const PopularListScreen();
   }
 }
