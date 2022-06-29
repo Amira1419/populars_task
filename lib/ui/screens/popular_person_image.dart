@@ -14,7 +14,7 @@ class PopularPersonImageScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(popularPerson.name),
         actions: [
-          IconButton(onPressed: ()async{
+          IconButton(onPressed: popularPerson.profilePath==null?null:()async{
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Downloading...')));
             bool isSuccess = await SaveImageNetwork.saveImage('https://image.tmdb.org/t/p/original${popularPerson.profilePath}');
             if(isSuccess)
@@ -27,7 +27,7 @@ class PopularPersonImageScreen extends StatelessWidget {
           }, icon: const Icon(Icons.file_download_rounded))
         ],
       ),
-      body: Image.network(
+      body: popularPerson.profilePath==null? const Center(child: Text('No Image',style: TextStyle(fontSize: 16),)): Image.network(
         'https://image.tmdb.org/t/p/original${popularPerson.profilePath}',
         fit: BoxFit.cover,
         height: double.infinity,

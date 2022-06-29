@@ -30,9 +30,10 @@ class PopularPersonCard extends StatelessWidget {
                       Navigator.of(context).push(MaterialPageRoute(builder: (context)=> PopularPersonImageScreen(popularPerson: popularPerson)));
                     },
                     child: CircleAvatar(
+                      child: popularPerson.profilePath == null?const Icon(Icons.person,color: Colors.white,):Container(),
                       
                       backgroundColor: Colors.grey.shade200,
-                      backgroundImage: NetworkImage('https://image.tmdb.org/t/p/w500${popularPerson.profilePath}'),
+                      backgroundImage: popularPerson.profilePath==null?null: NetworkImage('https://image.tmdb.org/t/p/w500${popularPerson.profilePath}'),
                         radius: 40 ,
                         // borderRadius: const BorderRadius.all(Radius.circular(8)),
                     ),

@@ -3,7 +3,7 @@ class PopularPerson{
   final int id;
   final String department;
   final String name;
-  final String profilePath;
+  final String? profilePath;
 
   PopularPerson({
     required this.id,
