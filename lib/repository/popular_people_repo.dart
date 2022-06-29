@@ -17,25 +17,26 @@ class PopularPeopleRepo {
     }
   }
 
-  static Future<PopularDetails> getPopularDetails(
-      int id) async {
+  static Future<PopularDetails> getPopularDetails(int id) async {
     try {
       Map<String, dynamic> popularDetailsData =
           await PopularPeopleNetwork.getPopularPeronDetails(id);
-          print(popularDetailsData);
-      return PopularDetails.fromJson(popularDetailsData);    
-      
+      print(popularDetailsData);
+      return PopularDetails.fromJson(popularDetailsData);
     } catch (e) {
       rethrow;
     }
   }
 
-  static Future<List<String>> getPopularImages(
-      int id) async {
+  static Future<List<String>> getPopularImages(int id) async {
+    List<String> imagesPaths = [];
     try {
       Map<String, dynamic> imagesData =
           await PopularPeopleNetwork.getPopularPeronImages(id);
-      return imagesData['profiles'];    
+      for (var element in (imagesData['profiles'] as List)) {
+        imagesPaths.add(element['file_path']);
+      }
+      return imagesPaths;
     } catch (e) {
       rethrow;
     }

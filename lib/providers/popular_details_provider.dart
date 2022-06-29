@@ -6,6 +6,7 @@ class PopularDetailsProvider with ChangeNotifier{
  late int popularId;
  late PopularDetails popularDetails;
  bool loading = false;
+ List<String> images = [];
 
  // setting this value once open any popular entry in order to get the popular details
 
@@ -13,13 +14,38 @@ class PopularDetailsProvider with ChangeNotifier{
    popularId = id;
  }
  PopularDetails get popularPersonDetails => popularDetails;
+ List<String> get popularPersonImages => [...images];
+
+int get popularPersonImagesCount => images.length;
+
 
  getPopularDetails() async
  {
    loading= true;
-   popularDetails = await PopularPeopleRepo.getPopularDetails(popularId);
-   loading = false;
+   try {
+    popularDetails = await PopularPeopleRepo.getPopularDetails(popularId);
+       loading = false;
    notifyListeners();
+   } catch (e){
+     rethrow;
+   }
+
+ }
+
+ getPopularImages() async 
+ {
+   try {
+      var imagesPaths = await PopularPeopleRepo.getPopularImages(popularId);
+      if(imagesPaths.isNotEmpty)
+      {
+        images = imagesPaths;
+      }
+      notifyListeners();
+
+   } catch (e) {
+     rethrow;
+   }
+
  }
 
 
