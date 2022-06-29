@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:squadio_task/models/popular_person_model.dart';
 import 'package:squadio_task/providers/populars_pagination_provider.dart';
-import 'package:squadio_task/repository/popular_people_repo.dart';
 import 'package:squadio_task/ui/widgets/popular_person_card.dart';
 
 class PagedPopularList extends StatelessWidget {
   PagedPopularList({ Key? key }) : super(key: key);
   
-  int _pageNumber = 1;   // used in finite scrolling
-
-
   @override
   Widget build(BuildContext context) {
     var paginationProvider = Provider.of<PopularsPaginationProvider>(context,listen: false);
